@@ -1,0 +1,309 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						3,
+						4
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						2,
+						6
+					]
+				},
+				{
+					"build" : "Dependencies/glfw",
+					"childIndexes" : 
+					[
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-Dependencies.glfw-Debug-531d6032986ef3d6c472.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.1"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "Dependencies/glfw",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "Dependencies/glfw/src",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-Dependencies.glfw.src-Debug-1c4c093784ec6acaa39e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.1"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "Dependencies/glfw/src",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "Dependencies/glew",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-Dependencies.glew-Debug-65226bb95a4cc4d58df5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "Dependencies/glew",
+					"targetIndexes" : 
+					[
+						4,
+						5
+					]
+				},
+				{
+					"build" : "Dependencies/assimp",
+					"childIndexes" : 
+					[
+						5,
+						6,
+						7
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-Dependencies.assimp-Debug-c8c920835afdf1d283d3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "Dependencies/assimp"
+				},
+				{
+					"build" : "Dependencies/assimp/code",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-Dependencies.assimp.code-Debug-b32bc493a37217571346.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 3,
+					"source" : "Dependencies/assimp/code",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "Dependencies/assimp/tools/assimp_cmd",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-Dependencies.assimp.tools.assimp_cmd-Debug-a0f18b658580be252341.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 3,
+					"source" : "Dependencies/assimp/tools/assimp_cmd",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "Dependencies/assimp/test",
+					"childIndexes" : 
+					[
+						8
+					],
+					"jsonFile" : "directory-Dependencies.assimp.test-Debug-b81682af23b697152392.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 3,
+					"source" : "Dependencies/assimp/test",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "Dependencies/assimp/test/headercheck",
+					"jsonFile" : "directory-Dependencies.assimp.test.headercheck-Debug-21dd6abd160a7d6a944d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 7,
+					"projectIndex" : 3,
+					"source" : "Dependencies/assimp/test/headercheck"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "tinyEngine",
+					"targetIndexes" : 
+					[
+						2,
+						6
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						3,
+						7
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "glew",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						4,
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4,
+						5,
+						6,
+						7,
+						8
+					],
+					"name" : "Assimp",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						8
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 5,
+					"id" : "assimp::@7b9e1dede671a7d07b94",
+					"jsonFile" : "target-assimp-Debug-16c0d14f398a9d4ec37f.json",
+					"name" : "assimp",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "assimp_cmd::@81bf3c1e1dd9c540fc5a",
+					"jsonFile" : "target-assimp_cmd-Debug-17d46bf297bdb791dc37.json",
+					"name" : "assimp_cmd",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "glew::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-glew-Debug-820f77a41137dfd8ce6d.json",
+					"name" : "glew",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "glfw::@38190cb09c4f7d3068ec",
+					"jsonFile" : "target-glfw-Debug-7aa37d3c8eac60c2e9eb.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "libglew_shared::@ea58d00f43181ccd9e59",
+					"jsonFile" : "target-libglew_shared-Debug-bac121262d76c8387005.json",
+					"name" : "libglew_shared",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "libglew_static::@ea58d00f43181ccd9e59",
+					"jsonFile" : "target-libglew_static-Debug-675647a03dfc6035804c.json",
+					"name" : "libglew_static",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "tinyEngine::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-tinyEngine-Debug-8fa9cb0b69bb732f5c0d.json",
+					"name" : "tinyEngine",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "uninstall::@a7dad7924c1d4f45e5fc",
+					"jsonFile" : "target-uninstall-Debug-c881770729adda3b6a2c.json",
+					"name" : "uninstall",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "unit::@3e8789e0aa50b95f5500",
+					"jsonFile" : "target-unit-Debug-5810b5397d1b969efdd1.json",
+					"name" : "unit",
+					"projectIndex" : 3
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/zzn/CLionProjects/tinyEngine/cmake-build-debug",
+		"source" : "/home/zzn/CLionProjects/tinyEngine"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

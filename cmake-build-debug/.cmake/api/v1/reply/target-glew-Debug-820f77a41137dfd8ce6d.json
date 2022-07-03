@@ -1,0 +1,232 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "libglew.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"add_definitions",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 32,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 33,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 31,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 39,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 45,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 46,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 47,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 48,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "GLEW_STATIC"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "/home/zzn/CLionProjects/tinyEngine/Dependencies/glew/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/home/zzn/CLionProjects/tinyEngine/Dependencies/assimp/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/home/zzn/CLionProjects/tinyEngine/Dependencies/glm"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/zzn/CLionProjects/tinyEngine/Dependencies/stb"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/home/zzn/CLionProjects/tinyEngine/Dependencies/irrKlang/include"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "/home/zzn/CLionProjects/tinyEngine/Dependencies/freetype/include"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				},
+				{
+					"fragment" : "-std=gnu++14"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "GLEW_STATIC"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "/home/zzn/CLionProjects/tinyEngine/Dependencies/glew/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/home/zzn/CLionProjects/tinyEngine/Dependencies/assimp/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/home/zzn/CLionProjects/tinyEngine/Dependencies/glm"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/zzn/CLionProjects/tinyEngine/Dependencies/stb"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/home/zzn/CLionProjects/tinyEngine/Dependencies/irrKlang/include"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "/home/zzn/CLionProjects/tinyEngine/Dependencies/freetype/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "14"
+			},
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"id" : "glew::@6890427a1f51a3e7e1df",
+	"name" : "glew",
+	"nameOnDisk" : "libglew.a",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Dependencies/glew/src/glew.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "src/Mesh.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/Mesh.h",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}
