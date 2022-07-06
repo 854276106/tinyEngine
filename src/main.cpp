@@ -156,158 +156,31 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 
 void InitRenderData()
 {
-	ResourceManager::LoadShader("../Resource/Shader/box.vert",
-			"../Resource/Shader/box.frag",nullptr,"box");
-	ResourceManager::LoadShader("../Resource/Shader/light.vert",
-			"../Resource/Shader/light.frag",nullptr,"light");
+	ResourceManager::LoadShader("../Resource/Shader/nanosuit.vert",
+			"../Resource/Shader/nanosuit.frag",nullptr,"nanosuit");
 
-	ResourceManager::LoadTexture("../Resource/Texture/awesomeface.png",GL_TRUE,"face",0);
-	ResourceManager::LoadTexture("../Resource/Texture/container.jpg",GL_FALSE,"container",1);
-	ResourceManager::LoadTexture("../Resource/Texture/container2.png",GL_TRUE,"container2",2);
-	ResourceManager::LoadTexture("../Resource/Texture/container2_specular.png",GL_TRUE,"container2_specular",3);
-
-	unsigned int VAO;
-	glGenVertexArrays(1,&VAO);
-	//创建VBO顶点缓冲对象
-	unsigned int VBO;
-	glGenBuffers(1,&VBO);
-	//绑定缓冲类型
-	glBindBuffer(GL_ARRAY_BUFFER,VBO);
-
-	glBindVertexArray(VAO);
-	//将用户数据复制到当前绑定缓冲(GL_ARRAY_BUFFER)    将数据从CPU复制到GPU
-	glBufferData(GL_ARRAY_BUFFER,sizeof(vertices),vertices,GL_STATIC_DRAW);
-
-	/*设置顶点属性指针 */
-	//位置属性
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)nullptr);
-	glEnableVertexAttribArray(0);
-	//法线属性
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
-	// 纹理属性
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2);
-
-	glActiveTexture(GL_TEXTURE0+ResourceManager::GetTexture("face").Slot);
-	ResourceManager::GetTexture("face").Bind();
-	glActiveTexture(GL_TEXTURE0+ResourceManager::GetTexture("container").Slot);
-	ResourceManager::GetTexture("container").Bind();
-	glActiveTexture(GL_TEXTURE0+ResourceManager::GetTexture("container2").Slot);
-	ResourceManager::GetTexture("container2").Bind();
-	glActiveTexture(GL_TEXTURE0+ResourceManager::GetTexture("container2_specular").Slot);
-	ResourceManager::GetTexture("container2_specular").Bind();
+	ResourceManager::LoadModel("../Resource/Model/nanosuit/nanosuit.obj","nanosuit");
 }
 
 void Render()
 {
-	Shader lightShader=ResourceManager::GetShader("light");
-	Shader boxShader=ResourceManager::GetShader("box");
-	Material *boxMaterial=new Material(
-			glm::vec3(0.0f, 0.0f, 0.0f),
-			ResourceManager::GetTexture("container2").TextureID,
-			ResourceManager::GetTexture("container2_specular").TextureID,
-			32.0f);
+	Shader nanosuitShader=ResourceManager::GetShader("nanosuit");
+	nanosuitShader.Use();
 
-	boxShader.Use();
-	boxShader.SetVector3f("viewPos", camera.Position);
-	// directional light
-	boxShader.SetVector3f("dirLight.direction", lightDirectional.direction);
-	boxShader.SetVector3f("dirLight.color", lightDirectional.color);
-	boxShader.SetVector3f("dirLight.ambient", lightDirectional.ambient);
-	boxShader.SetVector3f("dirLight.diffuse", lightDirectional.diffuse);
-	boxShader.SetVector3f("dirLight.specular", lightDirectional.specular);
+	// view/projection transformations
+	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+	glm::mat4 view = camera.GetViewMatrix();
+	nanosuitShader.SetMatrix4("projection", projection);
+	nanosuitShader.SetMatrix4("view", view);
 
-	// point light
-	boxShader.SetVector3f("pointLights[0].position", lightPoint[0].position);
-	boxShader.SetVector3f("pointLights[0].color", lightPoint[0].color);
-	boxShader.SetVector3f("pointLights[0].ambient", lightPoint[0].ambient);
-	boxShader.SetVector3f("pointLights[0].diffuse", lightPoint[0].diffuse);
-	boxShader.SetVector3f("pointLights[0].specular", lightPoint[0].specular);
-	boxShader.SetFloat("pointLights[0].constant", lightPoint[0].constant);
-	boxShader.SetFloat("pointLights[0].linear", lightPoint[0].linear);
-	boxShader.SetFloat("pointLights[0].quadratic", lightPoint[0].quadratic);
+	// render the loaded model
+	glm::mat4 model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+	model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+	nanosuitShader.SetMatrix4("model", model);
 
-	boxShader.SetVector3f("pointLights[1].position", lightPoint[1].position);
-	boxShader.SetVector3f("pointLights[1].color", lightPoint[1].color);
-	boxShader.SetVector3f("pointLights[1].ambient", lightPoint[1].ambient);
-	boxShader.SetVector3f("pointLights[1].diffuse", lightPoint[1].diffuse);
-	boxShader.SetVector3f("pointLights[1].specular", lightPoint[1].specular);
-	boxShader.SetFloat("pointLights[1].constant", lightPoint[1].constant);
-	boxShader.SetFloat("pointLights[1].linear", lightPoint[1].linear);
-	boxShader.SetFloat("pointLights[1].quadratic", lightPoint[1].quadratic);
-
-	boxShader.SetVector3f("pointLights[2].position", lightPoint[2].position);
-	boxShader.SetVector3f("pointLights[2].color", lightPoint[2].color);
-	boxShader.SetVector3f("pointLights[2].ambient", lightPoint[2].ambient);
-	boxShader.SetVector3f("pointLights[2].diffuse", lightPoint[2].diffuse);
-	boxShader.SetVector3f("pointLights[2].specular", lightPoint[2].specular);
-	boxShader.SetFloat("pointLights[2].constant", lightPoint[2].constant);
-	boxShader.SetFloat("pointLights[2].linear", lightPoint[2].linear);
-	boxShader.SetFloat("pointLights[2].quadratic", lightPoint[2].quadratic);
-
-	boxShader.SetVector3f("pointLights[3].position", lightPoint[3].position);
-	boxShader.SetVector3f("pointLights[3].color", lightPoint[3].color);
-	boxShader.SetVector3f("pointLights[3].ambient", lightPoint[3].ambient);
-	boxShader.SetVector3f("pointLights[3].diffuse", lightPoint[3].diffuse);
-	boxShader.SetVector3f("pointLights[3].specular", lightPoint[3].specular);
-	boxShader.SetFloat("pointLights[3].constant", lightPoint[3].constant);
-	boxShader.SetFloat("pointLights[3].linear", lightPoint[3].linear);
-	boxShader.SetFloat("pointLights[3].quadratic", lightPoint[3].quadratic);
-
-	// spotLight
-	boxShader.SetVector3f("spotLight.position", camera.Position);
-	boxShader.SetVector3f("spotLight.direction", camera.Front);
-	boxShader.SetVector3f("spotLight.color", lightSpot.color);
-	boxShader.SetVector3f("spotLight.ambient", lightSpot.ambient);
-	boxShader.SetVector3f("spotLight.diffuse", lightSpot.diffuse);
-	boxShader.SetVector3f("spotLight.specular", lightSpot.specular);
-	boxShader.SetFloat("spotLight.constant", lightSpot.constant);
-	boxShader.SetFloat("spotLight.linear", lightSpot.linear);
-	boxShader.SetFloat("spotLight.quadratic", lightSpot.quadratic);
-	boxShader.SetFloat("spotLight.cutOff", lightSpot.cutOff);
-	boxShader.SetFloat("spotLight.outerCutOff", lightSpot.outerCutOff);
-
-	// create transformations
-	glm::mat4 view          = glm::mat4(1.0f);
-	glm::mat4 projection    = glm::mat4(1.0f);
-	view = camera.GetViewMatrix();
-	projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-	boxShader.SetMatrix4("view",view);
-	boxShader.SetMatrix4("projection",projection);
-
-	boxShader.Use();
-	for (auto & cubePosition : cubePositions)
-	{
-		// calculate the model matrix for each object and pass it to shader before drawing
-		glm::mat4 model = glm::mat4(1.0f);
-		model = glm::translate(model, cubePosition);
-		model = glm::rotate(model, (float)glfwGetTime() * glm::radians(-45.0f), glm::vec3(1.0f, 0.3f, 0.5f));
-		boxShader.SetMatrix4("model",model);
-
-		//set Material -> Uniforms
-		boxShader.SetVector3f("material.ambient", boxMaterial->ambient);
-		boxShader.SetInteger("material.diffuse", ResourceManager::GetTexture("container2").Slot);
-		boxShader.SetInteger("material.specular", ResourceManager::GetTexture("container2_specular").Slot);
-		boxShader.SetFloat("material.shininess", boxMaterial->shiness);
-
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-	}
-
-	lightShader.Use();
-	lightShader.SetMatrix4("view",view);
-	lightShader.SetMatrix4("projection",projection);
-
-	for (auto & pointLightPosition : pointLightPositions)
-	{
-	// calculate the model matrix for each object and pass it to shader before drawing
-		glm::mat4 model = glm::mat4(1.0f);
-		model = glm::translate(model, pointLightPosition);
-		model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
-		lightShader.SetMatrix4("model",model);
-
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-	}
+	Model nanosuit=ResourceManager::GetModel("nanosuit");
+	nanosuit.Draw(nanosuitShader);
 }
 
 int main()
@@ -337,7 +210,7 @@ int main()
 	glfwMakeContextCurrent(window);
 	glfwSetFramebufferSizeCallback(window,framebuffer_size_callback);
 	glfwSetErrorCallback(error_callback);
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); //隐藏鼠标光标
+	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); //隐藏鼠标光标
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
 	glfwSetKeyCallback(window, key_callback);

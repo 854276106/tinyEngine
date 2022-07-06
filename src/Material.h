@@ -10,11 +10,11 @@
 class Material
 {
 public:
-	Material(glm::vec3 _ambient, unsigned int _diffues, unsigned int _specular, float _shiness);
+	Material(glm::vec3 _ambient, unsigned int _diffuse, unsigned int _specular, float _shiness);
 	~Material();
 public:
 	glm::vec3 ambient;
-	unsigned int diffues;
+	unsigned int diffuse;
 	unsigned int specular;
 	float shiness;
 };

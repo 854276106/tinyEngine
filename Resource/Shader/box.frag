@@ -5,13 +5,15 @@ in vec3 FragPos;
 in vec3 Normal;
 in vec2 TexCoord;
 
-struct Material {
+struct Material
+{
     sampler2D diffuse;
     sampler2D specular;
     float shininess;
 };
 
-struct DirLight {
+struct DirLight
+{
     vec3 direction;
     vec3 color;
     vec3 ambient;
@@ -19,7 +21,8 @@ struct DirLight {
     vec3 specular;
 };
 
-struct PointLight {
+struct PointLight
+{
     vec3 position;
     vec3 color;
 //衰减系数
@@ -32,7 +35,8 @@ struct PointLight {
     vec3 specular;
 };
 
-struct SpotLight {
+struct SpotLight
+{
     vec3 position;
     vec3 direction;
     vec3 color;
